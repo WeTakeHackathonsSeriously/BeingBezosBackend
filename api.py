@@ -26,7 +26,7 @@ app = Flask(__name__)
 @app.route('/api/upload/', methods=['POST'])
 def upload():
     # Code goes here
-    request.args['image']
+    #request.args['image']
 
     return jsonify(items=[
         { "item": "laptop"
