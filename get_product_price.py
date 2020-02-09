@@ -8,7 +8,18 @@ def get_product_price(name):
     url = "https://www.google.com/search?q=\"" + name + "\"&tbm=shop"
     page = requests.get(url, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
-    return float(soup.findAll("span", {"class": "Nr22bf"})[0].text[1:-1])
+    results = soup.findAll("span", {"class": "Nr22bf"})
+
+    price = 0
+    n = min(4, len(results))
+
+    if n == 0:
+        return None
+
+    for i in range(n):
+        price += float(results[i].text.replace(',','')[1:-1])
+    return price / (n - 1)
+
 
 if __name__ == '__main__':
-    print(get_product_price("lamp"))
+    print(get_product_price("jeff bezos"))
