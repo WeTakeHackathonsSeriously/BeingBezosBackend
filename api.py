@@ -30,8 +30,8 @@ def upload():
     # Code goes here
     image  = request.form.getlist('image')
     image2 = request.args.get('image')
-    app.log.error(image)
-    app.log.error(image2)
+    app.logger.error(image)
+    app.logger.error(image2)
     print(image)
     print(image2)
    
