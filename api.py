@@ -20,6 +20,7 @@ app = Flask(__name__)
 # Post request to upload image.
 # Parameters:
 #   ?image - used to pass the base64 encoded image.
+#   ?income - the user's average income
 # Return:
 #   JSON file.
 
