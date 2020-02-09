@@ -28,12 +28,10 @@ app = Flask(__name__)
 @app.route('/api/upload/', methods=['POST'])
 def upload():
     # Code goes here
-    image  = request.form.getlist('image')
-    image2 = request.args.get('image')
-    app.logger.error(image)
-    app.logger.error(image2)
-    print(image)
-    print(image2)
+    image = request.values['image']
+    #image  = request.form.getlist('image')
+    #if image == None:
+    #    image = request.args.get('image')
    
     x1 = random.uniform(0, 0.5)
     x2 = random.uniform(0.5, 1)
