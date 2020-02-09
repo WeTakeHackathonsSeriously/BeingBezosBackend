@@ -3,6 +3,7 @@ from base64 import b64decode
 
 import os
 import io
+import random
 
 from google.cloud import vision
 from google.cloud.vision import types
@@ -20,16 +21,25 @@ app = Flask(__name__)
 # Post request to upload image.
 # Parameters:
 #   ?image - used to pass the base64 encoded image.
+#   ?income - the user's average income
 # Return:
 #   JSON file.
 
 @app.route('/api/upload/', methods=['POST'])
 def upload():
     # Code goes here
-    #request.args['image']
+    image = request.values['image']
+    #image  = request.form.getlist('image')
+    #if image == None:
+    #    image = request.args.get('image')
+   
+    x1 = random.uniform(0, 0.5)
+    x2 = random.uniform(0.5, 1)
+    y1 = random.uniform(0, 0.5)
+    y2 = random.uniform(0.5, 1)
 
-    return jsonify(items=[
+    return jsonify([
         { "item": "laptop"
-        , "box" : [0.25, 0.25, 0.75, 0.75]
+        , "box" : [x1, y1, x2, y2]
         , "rel" : 0.0043
         }])
