@@ -9,7 +9,7 @@ from google.cloud import vision
 from google.cloud.vision import types
 
 app = Flask(__name__)
-
+client = vision.ImageAnnotatorClient()
 
 # return list of:
 # { 
@@ -29,10 +29,13 @@ app = Flask(__name__)
 def upload():
     # Code goes here
     image = request.values['image']
+    decoded_image = b64decode(image)
+    vis_img = vision.types.Image(content=decoded_image)
+    return jsonify(get_objects(vis_img, client, 100000))
     #image  = request.form.getlist('image')
     #if image == None:
     #    image = request.args.get('image')
-   
+""" 
     x1 = random.uniform(0, 0.5)
     x2 = random.uniform(0.5, 1)
     y1 = random.uniform(0, 0.5)
@@ -43,3 +46,4 @@ def upload():
         , "box" : [x1, y1, x2, y2]
         , "rel" : 0.0043
         }])
+"""

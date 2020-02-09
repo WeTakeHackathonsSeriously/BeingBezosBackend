@@ -22,4 +22,4 @@ def get_product_price(name):
 
 
 if __name__ == '__main__':
-    print(get_product_price("jeff bezos"))
+    print(get_product_price("apple"))
